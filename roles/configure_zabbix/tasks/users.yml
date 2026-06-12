@@ -1,6 +1,9 @@
----
-# Vytvoření dedikovaného API uživatele s vysokým oprávněním pro potřeby Grafany
-- name: Create a new Zabbix user
+# ============================================
+# UŽIVATELÉ V ZABBIXU
+# ============================================
+
+# 1. API USER PRO GRAFANU (ZŮSTÁVÁ PŮVODNÍ)
+- name: Create API user for Grafana integration
   community.zabbix.zabbix_user:
     username: "{{ zabbix_api_user }}"
     passwd: "{{ zabbix_api_user_password }}"
@@ -8,3 +11,17 @@
     usrgrps:
       - "Zabbix administrators"
     state: present
+
+
+- name: Create personal user with name, surname and school email
+  community.zabbix.zabbix_user:
+    username: "ondrej.jirotu "                 
+    name: "ondrej"                         
+    surname: "jirout"                         
+    passwd: "heslo123"              
+    email: "jirout.ondrej@student.sposdk.cz"       
+    role_name: "Super admin role"           
+    usrgrps:
+      - "Zabbix administrators"
+    state: present
+  register: personal_user
