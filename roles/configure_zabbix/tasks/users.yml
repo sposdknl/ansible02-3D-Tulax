@@ -13,18 +13,16 @@
     state: present
 
 
-- name: Create personal user with name, surname and school email
+- name: Create custom zabbix user
   community.zabbix.zabbix_user:
-    username: "ondrej.jirotu"
+    username: "tulax"
     name: "ondrej"
     surname: "jirout"
-    passwd: "heslo123"
-    role_name: "Super admin role"
+    passwd: "nevim"
     usrgrps:
       - "Zabbix administrators"
     user_medias:
-      - mediatype: "Email"
-        sendto: "jirout.ondrej@student.sposdk.cz"
-        active: true
+      - mediatype: Email
+        sendto:
+          - jirout.ondrej@student.sposdk.cz
     state: present
-  register: personal_user
