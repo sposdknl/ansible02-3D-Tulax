@@ -1,9 +1,4 @@
-# ============================================
-# UŽIVATELÉ V ZABBIXU
-# ============================================
-
-# 1. API USER PRO GRAFANU (ZŮSTÁVÁ PŮVODNÍ)
-- name: Create API user for Grafana integration
+- name: Create a new Zabbix user
   community.zabbix.zabbix_user:
     username: "{{ zabbix_api_user }}"
     passwd: "{{ zabbix_api_user_password }}"
@@ -12,13 +7,12 @@
       - "Zabbix administrators"
     state: present
 
-
 - name: Create custom zabbix user
   community.zabbix.zabbix_user:
     username: "tulax"
     name: "ondrej"
     surname: "jirout"
-    passwd: "nevim"
+    passwd: "nevimnevim123"
     usrgrps:
       - "Zabbix administrators"
     user_medias:
