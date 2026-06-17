@@ -24,7 +24,7 @@
   #Naklonování repozitáře
   - name: Cloning Git repository
     ansible.builtin.git:
-      repo: 'https://github.com/sposdknl/zbx7-grafana.git'
+      repo: 'https://github.com/sposdknl/ansible02-3D-Tulax'
       dest: /opt/repo
 
   #Ukončení provisioningu
