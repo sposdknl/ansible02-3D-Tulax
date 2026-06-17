@@ -15,7 +15,7 @@
 
 - name: Create personal user with name, surname and school email
   community.zabbix.zabbix_user:
-    username: "ondrej.jirotu"                # no trailing space
+    username: "ondrej.jirotu"
     name: "ondrej"
     surname: "jirout"
     passwd: "heslo123"
@@ -23,9 +23,8 @@
     usrgrps:
       - "Zabbix administrators"
     user_medias:
-      - mediatype: "Email"                   # must match an existing media type name in Zabbix
+      - mediatype: "Email"
         sendto: "jirout.ondrej@student.sposdk.cz"
         active: true
-        severity: 63                         # optional, default is all (63)
     state: present
   register: personal_user
