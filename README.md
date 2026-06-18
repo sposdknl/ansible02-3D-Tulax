@@ -1,3 +1,69 @@
+
+![Zabbix hosti](images/hosti.png)
+zde jsou videt vsechni hosti 
+![Zabbix hosti](images/hosti2.png)
+zde co ten host dela 
+![Zabbix hosti](images/hosti3.png)
+zde co ma za sablonu
+![Zabbix hosti](images/users.png)
+zde jsou videt uzivatele 
+![Zabbix hosti](images/users2.png)
+zde je videt ze uzivatej je napsan na muj mail
+
+![Zabbix hosti](images/grafana.png)
+zde je videt , ze jede grafana 
+
+
+
+Vyexportovaný host se nachází [zde](host.yaml)
+
+
+
+zde jsou  kod pro pridani hosta 
+- name: Create Zabbix host for badssl website
+  community.zabbix.zabbix_host:
+    host_name: expired.badssl.com
+    visible_name: Expired BadSSL
+    host_groups:
+      - Web Certificate
+    link_templates:
+      - Website certificate by Zabbix agent 2
+    interfaces:
+      - type: 1
+        main: 1
+        useip: 1
+        ip: 192.168.1.2
+        dns: ""
+        port: "10050"
+    macros:
+      - macro: "{$CERT.WEBSITE.HOSTNAME}"
+        value: "expired.badssl.com"
+    state: present
+
+zde je cast kodu pro pridani usera
+- name: Create custom zabbix user
+  community.zabbix.zabbix_user:
+    username: "tulax"
+    name: "ondrej"
+    surname: "jirout"
+    passwd: "nevimnevim123"
+    usrgrps:
+      - "Zabbix administrators"
+    user_medias:
+      - mediatype: Email
+        sendto:
+          - jirout.ondrej@student.sposdk.cz
+    state: present
+
+
+
+
+
+
+
+
+# Zadání
+
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/cCPQDIPk)
 # Zabbix vs Grafana automatizece
 
